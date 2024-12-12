@@ -1,0 +1,5 @@
+spring.application.name=VEHICLE_ENGINE_LOOSELY_COUPLED
+
+
+#currier dependent name
+currier.name=dhl

@@ -1,0 +1,5 @@
+package com.jsp.configuration;
+
+public class ApplicationConfiguration {
+
+}

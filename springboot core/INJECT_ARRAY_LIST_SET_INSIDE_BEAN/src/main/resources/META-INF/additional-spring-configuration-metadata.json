@@ -1,0 +1,62 @@
+{"properties": [
+  {
+    "name": "org.nt.colors[0]",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.colors[0]'"
+  },
+  {
+    "name": "org.nt.iddetails.aadhar",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.iddetails.aadhar'"
+  },
+  {
+    "name": "org.nt.iddetails.birthcertificate",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.iddetails.birthcertificate'"
+  },
+  {
+    "name": "org.nt.iddetails.phone",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.iddetails.phone'"
+  },
+  {
+    "name": "org.nt.colors[0]",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.colors[0]'"
+  },
+  {
+    "name": "org.nt.colors[0]",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.colors[0]'"
+  },
+  {
+    "name": "org.nt.colors[1]",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.colors[1]'"
+  },
+  {
+    "name": "org.nt.colors[2]",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.colors[2]'"
+  },
+  {
+    "name": "org.nt.names",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.names'"
+  },
+  {
+    "name": "org.nt.phones[0]",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.phones[0]'"
+  },
+  {
+    "name": "org.nt.phones[1]",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.phones[1]'"
+  },
+  {
+    "name": "org.nt.phones[2]",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.phones[2]'"
+  }
+]}

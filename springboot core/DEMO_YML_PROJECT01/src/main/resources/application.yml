@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: DEMO_YML_PROJECT01
+    
+com:
+  nt:
+    name: raja
+    address: hydrabad
+    size: 120
+    email : subhabratap733@gmail.com
+    pincode: 721457
+    nicknames:
+      -ramesh
+      -suresh
+      -mahessh
+    phones: [8998949,849208,627638]
+    colors:
+      -red
+      -yellow
+      -green
+    iddetails:
+      voterid: 677288
+      passport: 73828
+    location:
+      houseno: 1234
+      street: rk street
+        

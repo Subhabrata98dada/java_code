@@ -1,0 +1,31 @@
+package com.nt.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.nt.models.Employee;
+
+import jakarta.persistence.Embeddable;
+
+@Controller("controller")
+public class HomeController {
+	@GetMapping("/")
+	public String showHomePage()
+	{
+		return "index";
+	}
+	@GetMapping("/register")
+	public String ShowEmployeeRegisterForm() {
+		return "employeeform";
+	}
+	
+	@PostMapping("/register")
+	public String registerEmployeeInDataBase(@ModelAttribute Employee employee)
+	{
+		System.out.println(employee);
+		return "sucessful";
+	}
+	
+}

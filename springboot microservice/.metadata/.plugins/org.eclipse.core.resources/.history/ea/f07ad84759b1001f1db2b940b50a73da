@@ -1,0 +1,105 @@
+package com.us.serviceimplement;
+
+import com.us.entity.Hotel;
+import com.us.entity.Rating;
+import com.us.entity.User;
+import com.us.exceptions.UserNotFoundException;
+import com.us.feignclient.HotelService;
+import com.us.feignclient.RatingService;
+import com.us.repository.UserRepository;
+import com.us.service.UserService;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+@Slf4j
+public class UserServiceImplement implements UserService {
+    @Autowired
+    private HotelService hotelservice;
+    @Autowired
+    private UserRepository userRepo;
+    @Autowired
+    private RatingService ratingService;
+    @Override
+    public String addUser(User user) {
+        userRepo.save(user);
+        return "user saved with id : "+user.getUserid();
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        log.info("Service method called");
+        List<User> users=userRepo.findAll();
+             users=      users.stream().map(user->{
+                       List<Rating> ratings=ratingService.getRatingByUser(user.getUserid());
+                       ratings=   ratings.stream().map(rating -> {
+                           Hotel hotel=hotelservice.getSingleHotel(rating.getHotelid());
+                           rating.setHotel(hotel);
+                           return rating;
+                       }).collect(Collectors.toList());
+                       user.setRatings(ratings);
+                       return user;
+                   }).collect(Collectors.toList());
+
+
+        return users;
+        
+    }
+
+    @Override
+    @CircuitBreaker(name = "RATING-SERVICE",fallbackMethod = "fallBackGetSingleUser")
+    public ResponseEntity<User> getSingleUser(Integer userid) {
+        Optional<User> opt=userRepo.findById(userid);
+        if(opt.isEmpty()) throw new UserNotFoundException("The id given by client not present : "+userid);
+        else
+        {
+           try {
+               List<Rating> ratings=ratingService.getRatingByUser(userid);
+               ratings= ratings.stream().map(rating -> {
+                   Hotel hotel1=hotelservice.getSingleHotel(rating.getHotelid());
+                   rating.setHotel(hotel1);
+                   return rating;
+               }).collect(Collectors.toList());
+               opt.get().setRatings(ratings);
+               return  new ResponseEntity<User>(opt.get(),HttpStatus.OK);
+           }
+           
+        }
+    }
+
+    @Override
+    public List<User> updateUser(User user) {
+        List<User> l=new ArrayList<User>();
+        Optional<User> opt=userRepo.findById(user.getUserid());
+        if(opt.isEmpty()) throw new UserNotFoundException();
+        User u=opt.get();
+        l.add(u);
+        userRepo.save(user);
+        l.add(user);
+        return l;
+    }
+
+    @Override
+    public User delete(Integer id) {
+        Optional<User> opt=userRepo.findById(id);
+        if(opt.isEmpty()) throw new UserNotFoundException("The user having id is not present : "+id);
+        userRepo.delete(opt.get());
+        return opt.get();
+    }
+    public ResponseEntity<User> fallBackGetSingleUser(Exception e)
+    {
+    	log.info("fall back method executed");
+    	return new ResponseEntity<User>(new User(),HttpStatus.BAD_GATEWAY);
+    }
+}

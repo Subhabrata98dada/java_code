@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "org.nt.location.housenumber",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.location.housenumber'"
+  },
+  {
+    "name": "org.nt.location.streetname",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.location.streetname'"
+  },
+  {
+    "name": "org.nt.location.pincode",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.location.pincode'"
+  },
+  {
+    "name": "org.nt.location.landmark",
+    "type": "java.lang.String",
+    "description": "A description for 'org.nt.location.landmark'"
+  }
+]}

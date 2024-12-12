@@ -1,0 +1,12 @@
+package com.nt.main;
+
+public class Child extends Parent implements I{
+	public int k;
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return k+"";
+	}
+
+}

@@ -1,0 +1,25 @@
+package com.nt.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller("controller")
+public class HomeController {
+	@GetMapping("/")
+	public String showHomePage()
+	{
+		return "index";
+	}
+	@GetMapping("/register")
+	public String ShowEmployeeRegisterForm() {
+		return "employeeform";
+	}
+	
+	@PostMapping("/register")
+	public String registerEmployeeInDataBase()
+	{
+		return "sucessful";
+	}
+	
+}

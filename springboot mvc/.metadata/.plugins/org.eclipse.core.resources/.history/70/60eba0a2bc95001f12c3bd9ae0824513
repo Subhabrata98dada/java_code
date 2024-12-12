@@ -1,0 +1,14 @@
+package com.nt.models;
+
+import jakarta.persistence.Entity;
+
+
+@Entity(name = "employee")
+public class Employee {
+    Integer id;
+    String name;
+    Long mobile;
+    String email;
+    String job;
+    Integer deptno;
+}

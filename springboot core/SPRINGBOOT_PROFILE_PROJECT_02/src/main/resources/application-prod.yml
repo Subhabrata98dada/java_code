@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: SPRINGBOOT_PROFILE_PROJECT_01
+  datasource:
+    url: jdbc:mysql://localhost:3306/university
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: org.apache.tomcat.jdbc.pool.DataSource

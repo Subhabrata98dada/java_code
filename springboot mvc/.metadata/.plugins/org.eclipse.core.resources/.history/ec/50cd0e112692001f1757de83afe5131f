@@ -1,0 +1,26 @@
+package com.nt.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller("controller")
+
+public class ActorOperationsController {
+	@GetMapping("/")
+	public String showHomePage()
+	{
+		return "welcome";
+	}
+	@GetMapping("/register")
+	public String regiserForm()
+	{
+		return "registerform";
+	}
+	@PostMapping("/register")
+	public String registerAction()
+	{
+		return "sucess";
+	}
+}

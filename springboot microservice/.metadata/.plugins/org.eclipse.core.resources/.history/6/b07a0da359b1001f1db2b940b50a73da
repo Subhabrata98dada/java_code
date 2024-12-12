@@ -1,0 +1,52 @@
+package com.us.controllers;
+
+import com.us.entity.User;
+import com.us.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/users")
+@Slf4j
+public class UserController {
+
+    @Autowired
+    private UserService userservice;
+    @PostMapping
+    public ResponseEntity<String> addUser(@RequestBody User user)
+    {
+       String msg= userservice.addUser(user);
+        return new ResponseEntity<String>(msg,HttpStatus.OK);
+    }
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUser()
+    {
+        log.info("User controller for all user called");
+        return new ResponseEntity<List<User>>(userservice.getAllUser(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public User getSingleUser(@PathVariable Integer id)
+    {
+        return userservice.getSingleUser(id);
+    }
+
+    @PutMapping
+    public ResponseEntity<List<User>> updateUser(@RequestBody User user)
+    {
+        return new ResponseEntity<List<User>>(userservice.updateUser(user),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable Integer id)
+    {
+       return new ResponseEntity<User>(userservice.delete(id),HttpStatus.OK) ;
+    }
+
+}

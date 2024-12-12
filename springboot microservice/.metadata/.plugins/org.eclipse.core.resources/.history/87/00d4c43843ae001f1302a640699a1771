@@ -1,0 +1,13 @@
+package com.rs.exception;
+
+public class RatingNotFoundxception extends RuntimeException{
+    public RatingNotFoundxception(String msg)
+    {
+        super(msg);
+    }
+    public RatingNotFoundxception()
+    {
+        super("This is not a valid id");
+    }
+
+}

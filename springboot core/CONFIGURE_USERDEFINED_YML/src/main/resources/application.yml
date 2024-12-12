@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: CONFIGURE_USERDEFINED_YML
+  config:
+    import: myyaml.yml
+    
+com:
+  nt:
+    size: 300
+    

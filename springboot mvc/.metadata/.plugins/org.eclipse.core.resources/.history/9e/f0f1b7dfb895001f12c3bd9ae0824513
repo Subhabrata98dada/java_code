@@ -1,0 +1,5 @@
+spring.application.name=MVC6_SOFT_DELETION
+
+server.port=8080
+spring.mvc.view.prefix=/WEB-INF/pages/
+spring.mvc.view.suffix=.jsp
