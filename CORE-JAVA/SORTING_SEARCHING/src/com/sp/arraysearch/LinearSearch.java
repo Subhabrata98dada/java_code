@@ -2,7 +2,7 @@ package com.sp.arraysearch;
 
 import java.util.Scanner;
 
-public class BubbleSearch {
+public class LinearSearch {
 	public static void main(String[] args) {
 		int a[]= {2,1,4,3,1,7,8,0,5,4};
 		Scanner sc=new Scanner(System.in);
